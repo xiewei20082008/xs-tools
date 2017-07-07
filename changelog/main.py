@@ -60,6 +60,10 @@ def main():
 
     exe('git checkout master',
         '{codePath}/{repo}'.format(codePath=data['codePath'], repo=args.repo))
+
+    exe('git fetch --all',
+        '{codePath}/{repo}'.format(codePath=data['codePath'], repo=args.repo))
+
     t = exe('git log --no-merges --oneline {tagRange}'.format(tagRange=args.tagRange),
             '{codePath}/{repo}'.format(codePath=data['codePath'], repo=args.repo))
     for i in t.split('\n'):
